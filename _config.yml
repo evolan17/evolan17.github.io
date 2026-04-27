@@ -1,8 +1,8 @@
 name: "Evolan"
 description: "个人主页 / 技术博客 / 学习与项目记录"
 
-avatar: https://evolan17.github.io/images/avatar.jpg
-favicon: https://evolan17.github.io/images/avatar.jpg
+avatar: /images/avatar.jpg
+favicon: /images/avatar.jpg
 
 navigation:
   - name: 首页
