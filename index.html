@@ -1,40 +1,54 @@
 ---
 layout: default
 ---
-<div class="search-container">
-  <input type="text" id="search-input" placeholder="search blog posts..." style="width: 90%;
-    height: 35px;
-    background-color: rgba(227,231,236,.2);
-    line-height: 35px;
-    margin-top: 20px;
-    padding:10px 16px;
-    border: 1px solid #c0c0c0;
-    font-size: 16px;
-    border-radius: 17px;
-    outline: none;
-    box-sizing: border-box;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);">
-  <ul id="results-container"></ul>
-</div>
+<section class="home-hero">
+  <p class="hero-kicker">PERSONAL SITE / TECH BLOG</p>
+  <h1>用博客沉淀技术，用主页展示自己。</h1>
+  <p class="hero-lead">
+    这里是 Evolan 的线上据点，记录编程学习、项目实践、问题排查和一些值得复盘的技术思考。
+  </p>
+  <div class="hero-actions">
+    <a class="button-primary" href="{{ site.baseurl }}/about/">了解我</a>
+    <a class="button-secondary" href="{{ site.baseurl }}/tags/">浏览标签</a>
+    {% if site.footer-links.github %}
+    <a class="button-secondary" href="https://github.com/{{ site.footer-links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+    {% endif %}
+  </div>
+  <div class="hero-notes">
+    <span>持续更新学习笔记</span>
+    <span>整理项目经验</span>
+    <span>沉淀可复用方案</span>
+  </div>
+</section>
 
-<!--script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script-->
+<section class="home-section">
+  <div class="section-heading">
+    <h2>最新文章</h2>
+    <p>从这里开始看我最近在写什么。</p>
+  </div>
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="搜索博客文章..." />
+    <ul id="results-container"></ul>
+  </div>
+</section>
+
 <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
-
 <script>
-	window.simpleJekyllSearch = new SimpleJekyllSearch({
-	searchInput: document.getElementById('search-input'),
-	resultsContainer: document.getElementById('results-container'),
-	json: '{{ site.baseurl }}/search.json',
-	searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
-	noResultsText: 'No results found',
-	limit: 10,
-	fuzzy: false,
-	exclude: ['Welcome']
-  })
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+    searchInput: document.getElementById("search-input"),
+    resultsContainer: document.getElementById("results-container"),
+    json: "{{ site.baseurl }}/search.json",
+    searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
+    noResultsText: "没有找到相关文章",
+    limit: 10,
+    fuzzy: false,
+    exclude: ["Welcome"]
+  });
 </script>
- 
+
 {% if site.posts.size == 0 %}
-  <h2>No post found</h2>
+  <h2>还没有文章</h2>
 {% endif %}
 
 <div class="posts">
@@ -65,7 +79,7 @@ layout: default
         {{ post.excerpt | truncate: 200 }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">继续阅读</a>
     </article>
   {% endunless %}
   {% endfor %}
@@ -81,7 +95,7 @@ layout: default
   {% endif %}
   {% if paginator.next_page %}
     <span class="next">
-      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">
         下一页 →
       </a>
     </span>
