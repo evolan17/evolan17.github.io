@@ -1,8 +1,8 @@
 name: "Evolan's blog"
 description: "Evolan的个人技术博客"
 
-avatar: https://evolan.github.io/images/avatar.png
-favicon: https://evolan.github.io/images/favicon.ico
+avatar: https://evolan17.github.io/images/avatar.png
+favicon: https://evolan17.github.io/images/favicon.ico
 
 navigation:
   - name: 首页
@@ -18,7 +18,7 @@ excerpt_separator: <!-- more -->
 
 footer-links:
   zhihu: 
-  email: xiongyunhan@outlook.com
+  email: jinmeihe280@gmail.com
   facebook:
   github: Evolan
   rss: welcome!
@@ -27,17 +27,17 @@ footer-links:
 
 footer-text: Copyright (c) 2024-2025 Pianfan
 
-url: https://evolan.github.io
+url: https://evolan17.github.io
 
 permalink: /:title/
 paginate_path: /page:num/
 
-# Gitalk
-gitalk:
-  clientID: cba98a0db83eb062c0f8
-  clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
-  repo: evolan.github.io
-  owner: evolan
+# # Gitalk
+# gitalk:
+#   clientID: cba98a0db83eb062c0f8
+#   clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
+#   repo: evolan17.github.io
+#   owner: evolan
 
 # The release of Jekyll Now
 version: v1.2.0
