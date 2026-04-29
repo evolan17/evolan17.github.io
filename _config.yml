@@ -1,15 +1,15 @@
 name: "Evolan"
-description: "个人主页 / 技术博客 / 学习与项目记录"
+description: "AI systems, multi-agent ideas, technical writing, and ongoing experiments."
 
 avatar: /images/avatar.jpg
 favicon: /images/avatar.jpg
 
 navigation:
-  - name: 首页
+  - name: Home
     url: /
-  - name: 关于
+  - name: About
     url: /about
-  - name: 标签
+  - name: Tags
     url: /tags
 
 paginate: 8

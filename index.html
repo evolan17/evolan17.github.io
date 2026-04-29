@@ -1,37 +1,148 @@
 ---
 layout: default
 ---
-<section class="home-hero">
-  <p class="hero-kicker">PERSONAL SITE / TECH BLOG</p>
-  <h1>用博客沉淀技术，用主页展示自己。</h1>
-  <p class="hero-lead">
-    这里是 Evolan 的线上据点，记录编程学习、项目实践、问题排查和一些值得复盘的技术思考。
-  </p>
-  <div class="hero-actions">
-    <a class="button-primary" href="{{ site.baseurl }}/about/">了解我</a>
-    <a class="button-secondary" href="{{ site.baseurl }}/tags/">浏览标签</a>
-    {% if site.footer-links.github %}
-    <a class="button-secondary" href="https://github.com/{{ site.footer-links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-    {% endif %}
-  </div>
-  <div class="hero-notes">
-    <span>持续更新学习笔记</span>
-    <span>整理项目经验</span>
-    <span>沉淀可复用方案</span>
-  </div>
+<section class="landing-shell" id="landing-shell">
+  <div class="landing-orb landing-orb-a"></div>
+  <div class="landing-orb landing-orb-b"></div>
+  <div class="landing-grid"></div>
+
+  <section class="landing-hero">
+    <div class="landing-copy" data-depth="0.08">
+      <p class="landing-kicker">EVOLAN / THINK, BUILD, SHIP</p>
+      <h1>把研究感、速度感和个人表达，压进一个会呼吸的主页。</h1>
+      <p class="landing-lead">
+        这里记录 AI、Multi-Agent、博弈论与产品实验。主页不是静态门牌，而是一块持续发光的控制台。
+      </p>
+
+      <div class="landing-actions">
+        <a class="button-primary" href="#latest-posts">查看文章</a>
+        <a class="button-secondary" href="#explore">开始探索</a>
+        {% if site.footer-links.github %}
+        <a class="button-secondary" href="https://github.com/{{ site.footer-links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        {% endif %}
+      </div>
+
+      <div class="signal-row">
+        <span>Focus: AI Systems</span>
+        <span>Mode: Builder + Researcher</span>
+        <span>Updated: {{ "now" | date: "%Y" }}</span>
+      </div>
+    </div>
+
+    <aside class="hero-panel" data-depth="0.16">
+      <div class="panel-glow"></div>
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="terminal-body">
+          <p><strong>&gt; status</strong></p>
+          <p>signal: <span id="hero-signal">designing motion systems</span></p>
+          <p>stack: jekyll / scss / minimal js</p>
+          <p>intent: build interfaces with identity</p>
+        </div>
+      </div>
+
+      <div class="hero-metrics">
+        <article>
+          <strong>{{ site.posts | size }}</strong>
+          <span>Posts</span>
+        </article>
+        <article>
+          <strong>{{ site.tags | size }}</strong>
+          <span>Topics</span>
+        </article>
+        <article>
+          <strong>24/7</strong>
+          <span>Curiosity</span>
+        </article>
+      </div>
+    </aside>
+  </section>
+</section>
+
+<section class="explore-strip" id="explore">
+  <article class="explore-card">
+    <span class="card-index">01</span>
+    <h2>Research Notes</h2>
+    <p>抽象问题、实验观察、方法论碎片，沉淀成可复用的思考结构。</p>
+  </article>
+  <article class="explore-card">
+    <span class="card-index">02</span>
+    <h2>Technical Writing</h2>
+    <p>从概念解释到工程实现，尽量写清楚系统为什么这样工作。</p>
+  </article>
+  <article class="explore-card">
+    <span class="card-index">03</span>
+    <h2>Build in Public</h2>
+    <p>把正在做的东西直接摊开，包括路线、取舍、失败和修正。</p>
+  </article>
 </section>
 
 <section class="home-section">
   <div class="section-heading">
-    <h2>最新文章</h2>
-    <p>从这里开始看我最近在写什么。</p>
+    <h2>Search the Archive</h2>
+    <p>直接检索文章、标签和主题。</p>
   </div>
 
-  <div class="search-container">
-    <input type="text" id="search-input" placeholder="搜索博客文章..." />
+  <div class="search-container search-surface">
+    <input type="text" id="search-input" placeholder="搜索关键词，比如 agent、llm、game theory..." />
     <ul id="results-container"></ul>
   </div>
 </section>
+
+{% assign featured_posts = paginator.posts | default: site.posts %}
+{% if featured_posts and featured_posts.size > 0 %}
+<section class="home-section" id="latest-posts">
+  <div class="section-heading section-heading-split">
+    <div>
+      <h2>Latest Dispatches</h2>
+      <p>最近发布的文章，按时间排序。</p>
+    </div>
+    <a class="section-link" href="{{ site.baseurl }}/tags/">Browse Tags</a>
+  </div>
+
+  <div class="post-showcase">
+    {% for post in featured_posts limit: 6 %}
+    {% unless post.draft %}
+    <article class="post-card">
+      <div class="post-card-meta">
+        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+        {% if post.tags and post.tags.size > 0 %}
+        <span>{{ post.tags | first }}</span>
+        {% endif %}
+      </div>
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+      <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+      <a class="post-card-link" href="{{ site.baseurl }}{{ post.url }}">Read Article</a>
+    </article>
+    {% endunless %}
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<section class="home-section">
+  <div class="empty-state">
+    <h2>Archive Warming Up</h2>
+    <p>文章列表还没有准备好，但主页的视觉系统已经先启动了。</p>
+  </div>
+</section>
+{% endif %}
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <span class="prev">
+      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">Newer Posts</a>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <span class="next">
+      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">Older Posts</a>
+    </span>
+  {% endif %}
+</div>
 
 <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
 <script>
@@ -40,64 +151,52 @@ layout: default
     resultsContainer: document.getElementById("results-container"),
     json: "{{ site.baseurl }}/search.json",
     searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
-    noResultsText: "没有找到相关文章",
-    limit: 10,
+    noResultsText: "没有找到匹配结果",
+    limit: 8,
     fuzzy: false,
     exclude: ["Welcome"]
   });
+
+  (function () {
+    var shell = document.getElementById("landing-shell");
+    var signal = document.getElementById("hero-signal");
+    var signals = [
+      "designing motion systems",
+      "mapping multi-agent ideas",
+      "shipping cleaner interfaces",
+      "writing research-backed notes"
+    ];
+    var signalIndex = 0;
+    var layers = document.querySelectorAll("[data-depth]");
+
+    if (signal) {
+      window.setInterval(function () {
+        signalIndex = (signalIndex + 1) % signals.length;
+        signal.textContent = signals[signalIndex];
+      }, 2200);
+    }
+
+    if (!shell || !layers.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    shell.addEventListener("pointermove", function (event) {
+      var rect = shell.getBoundingClientRect();
+      var offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+      var offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+      layers.forEach(function (layer) {
+        var depth = parseFloat(layer.getAttribute("data-depth")) || 0;
+        var x = offsetX * depth * 42;
+        var y = offsetY * depth * 42;
+        layer.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+      });
+    });
+
+    shell.addEventListener("pointerleave", function () {
+      layers.forEach(function (layer) {
+        layer.style.transform = "translate3d(0,0,0)";
+      });
+    });
+  })();
 </script>
-
-{% if site.posts.size == 0 %}
-  <h2>还没有文章</h2>
-{% endif %}
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  {% unless post.draft %}
-    <article class="post">
-      <h1>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h1>
-
-      <div class="meta">
-        <span class="date">
-          {{ post.date | date: "%Y-%m-%d" }}
-        </span>
-
-        <ul class="tag">
-          {% for tag in post.tags %}
-          <li>
-            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
-              {{ tag }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="entry">
-        {{ post.excerpt | truncate: 200 }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">继续阅读</a>
-    </article>
-  {% endunless %}
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <span class="prev">
-      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
-        ← 上一页
-      </a>
-    </span>
-  {% endif %}
-  {% if paginator.next_page %}
-    <span class="next">
-      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">
-        下一页 →
-      </a>
-    </span>
-  {% endif %}
-</div>

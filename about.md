@@ -1,40 +1,25 @@
 ---
 layout: page
-title: 关于
+title: About
 permalink: /about/
 ---
 
-## 关于我
+## Evolan
 
-你好，我是 Evolan。
+I write about AI systems, multi-agent reasoning, game theory, and the process of building technical ideas into working products.
 
-我目前主要关注 AI 相关方向，尤其是以下几个主题：
+This site is a personal lab notebook:
 
-1. Multi-Agent Systems
-2. Game Theory
-3. Social Reasoning / Theory of Mind
-4. Large Language Models
+1. Research notes that turn abstract questions into structured observations.
+2. Engineering posts focused on implementation details and tradeoffs.
+3. Public build logs for experiments, prototypes, and interface work.
 
-我希望构建的不只是“能完成任务”的模型，而是能够持续学习、持续调整、持续进化的智能系统。研究、编码、复盘和分享，基本构成了我现在的日常。
+## What You Will Find Here
 
-## 我在做什么
+The goal is not volume. The goal is signal.
 
-这个站点是我的个人主页，也是技术博客。
+You can expect:
 
-我会在这里持续记录：
-
-1. 学习过程中的关键笔记
-2. 项目实践中的设计、实现与复盘
-3. 对 AI 系统、智能体架构和技术成长的思考
-
-相比把内容堆成一组零散文章，我更希望这里逐步形成一个长期积累、可以反复回看的知识仓库。
-
-## 关于这个站点
-
-这里对应的是公开的个人网站仓库，内容重点会放在：
-
-1. 个人研究兴趣与技术方向
-2. 博客文章与阶段性输出
-3. 项目经验、方法总结和可复用思路
-
-如果你对这里的内容感兴趣，或者发现明显问题，欢迎通过仓库主页联系我。
+1. Clear technical writing instead of vague summaries.
+2. Ongoing experiments around agents, LLM workflows, and reasoning systems.
+3. A mix of theory, code, and product thinking.
